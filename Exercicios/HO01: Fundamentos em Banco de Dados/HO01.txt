@@ -8,52 +8,68 @@
 
 3. Como usuários e aplicações interagem com um SBD?
 
- - A interação com um SBD é feita
+ - A interação com um SBD é feita através de um SGBD, ou seja, um software que possibilita o acesso e manipulação dos dados armazenados no banco de dados.
 
 4. O que é um banco de dados (BD)? Cite um exemplo de um BD, indicando o link onde seja possível encontrá-lo.
 
- - 
+ - Um banco de dados é uma coleção de dados (símbolos, sinais, códigos) organizados, um exemplo de BD é o banco de dados de filmes do IMDB, disponível em: https://www.imdb.com/interfaces/
 
 5. Quais são as propriedades de um BD?
 
+  - As propriedades de um BD são, Finalidade (Proposito específico), Realidade (Representam "o mundo real", ou seja o minimundo, o universo em discurso), Coerência (Mantendo um carência logica da coleção) e Compartilhamento (Prove o compartilhamento dos dados)
 
 6. Quais são as etapas de um projeto de BD?
 
+  -  As etapas de um projeto de BD são, Especificação do minimundo, levantamento de requisitos , projeto conceitual, projeto logica, projeto fisica.
 
 7. O que é um sistema gerenciador de banco de dados (SGBD)?
 
+  - Um SGBD é um software que possibilita o acesso e manipulação dos dados armazenados no banco de dados. Fornecendo uma interface entre os usuários e os dados armazenados, facilitando operações como inserção, atualização, exclusão e consulta de dados
 
 8. Quais são as propriedades de um SGBD?
 
+  - As propriedades de um SGBD são Repositório único, abstração dos dados, natureza autodestrutiva, compartilhamento de dados, isolamento entre programas e dados, suporte a múltiplas visões sobre dados, processamento de transações multiusuário, flexibilidade, multiplas interfaces, economia de escala, garantia de padrões, restrições de acesso, backup e recuperação, disponibilidade elevada, restrições de integridade, tempo de desenvolvimento e relacionamentos complexos
 
 9. Indique situações em que o uso de SGBD pode se mostrar inadequado.
 
+  - Em situações como, monousuário, baixa complexidade, requisitos rigorosos, alta especialização, custo proibitivo. 
 
 10. O que é um modelo de dados? 
 
+  - É uma estrutura lógica que determina a forma como os dados são armazenados, organizados e manipulados em um banco de dados.
 
 11. Em relação ao nível de abstração, quais são os tipos de modelos de dados?
 
+  - São eles Conceitual (alto nível de abstração, como os os usuários percebem), Representativo (nível intermediário de abstração ou modelo de implementação), Físico (nível de abstração mais baixo, apresenta detalhando aspectos de armazenamento físico) 
 
 12. O que é um Esquema de BD?
 
+  - Um esquema de BD é uma estrutura que representa a estrutura logica dos dados dentro de um banco de dados, especificando tabelas, colunas, tipo de dados e restrições e regras de integridade. 
 
 13. O que é uma Instância de BD?
 
+  - Uma instancia de BD é uma representação de um banco de dados em um determinado momento, ou seja, uma copia da distribuição dos dados em instante especifico em um determinado banco de dados
 
-14. Quais as vantagens de se adotar uma Arquitetura de Três Esquemas para implementar um BD?
+  14. Quais as vantagens de se adotar uma Arquitetura de Três Esquemas para implementar um BD?
 
+  - As vantagens de se adotar uma Arquitetura de Três Esquemas são a Independência de dados, flexibilidade na modelagem, facilidade de manutenção, controle de acesso
 
 15. Quais níveis existem em uma Arquitetura de Três Esquemas?
 
+  - Os níveis são o nível interno(esquema físico, descrição detalhada de armazenamento de dados e caminhos de acesso), nível conceitual(esquema conceitual, descrição de dados, entidades relacionamentos, restrições e operações do usuário) e nível externo(visões de usuário, modelo de dados representativo )
 
 16. O que é Mapeamento em uma Arquitetura de Três Esquemas?
 
+  - Mapeamento é a transformação de requisições e resultados entre níveis, ou seja, o SGBD transform uma solicitação especifica por usuário em uma solicitação no esquema conceitual e, em seguida, em uma solicitação no esquema interno para que o processo de dados possa ser realizado
 
 17. O que é Independência de Dados e qual sua importância para um SBD?
 
+  - Independência de dados é a capacidade de se alterar o esquema em um nível sem precisar alterar o esquema do nível adjacente superior
 
 18. O que é uma Linguagem de Consulta?
 
+  - Uma linguagem de consulta é uma linguagem que permite a realização de consultas em um banco de dados
 
 19. Cite as linguagens incorporadas na linguagem SQL.
+
+  - São ela VDL (linguagem de definição de visualização de dados), DDL (linguagem de definição de dados, ou seja especifica o esquema conceitual), SDL (linguagem de definição de sistemas de armazenamento, ou seja especifica o esquema interno) e DML (linguagem de manipulação de dados, ou seja, as operações de inserção, modificação, exclusão e recuperação de dados)
