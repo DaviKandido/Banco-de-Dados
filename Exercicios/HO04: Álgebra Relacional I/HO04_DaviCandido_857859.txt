@@ -1,0 +1,54 @@
+    
+    Nome: Davi Cândido de Almeida
+    Matricula: 857859
+
+    Perguntas:
+
+    1. Projetar o primeiro nome e o último nome dos atores de sexo feminino;
+
+    πfirst_name,last_name(σgender='F'(actors))
+
+
+    2. Projetar o nome dos filmes com ano superior à 1999;
+
+    πname(σyear>1999(movies))
+
+
+    3. Projetar o nome do filme e o nome do diretor de cada filme;
+
+    A ← movies ⨝ id=movie_id movies_directors
+    B ← directors ⨝id=director_id A
+    πname,first_name(B)
+
+
+    4. Projetar o nome do filme, nome do ator e o papel que cada ator teve no filme para filmes com ranking acima da nota 6;
+
+    πname,first_name,role(actors ⨝id=actor_id (roles ⨝movie_id=id (σ rank > 6 (movies))))
+
+    ou para melhor legibilidade:
+
+    A ← σ rank > 6 (movies)  
+    B ← roles ⨝ movie_id = id (A)  
+    C ← actors ⨝ id = actor_id (B)  
+    π name, first_name, role (C)
+
+
+    5. Projetar o nome do diretor e o número de filmes que cada diretor dirigiu;
+
+    A ← directors ⨝ id = director_id movies_directors
+    first_name γ COUNT(movie_id) (A)
+
+
+    6. Projetar o gênero e o número de filmes de cada gênero; 
+
+     A ← movies ⨝ id=movie_id movies_genres
+     genre γ COUNT(movie_id) (A)
+
+
+    7. Projetar o gênero, o ranking (nota) médio, mínimo e máximo dos filmes do gênero.
+
+    A ← movies ⨝ id=movie_id movies_genres
+    genre γ AVG(rank), MIN(rank), MAX(rank) (A)
+
+
+
