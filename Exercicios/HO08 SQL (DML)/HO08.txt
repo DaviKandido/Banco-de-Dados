@@ -26,21 +26,24 @@
 
  5. Projetar primeiro nome e o último nome dos atores que não atuaram em pelo menos dois filmes;
  
-    SELECT A.first_name, A.last_name, COUNT(R.movie_id) AS quant
-    FROM actors AS A
-    JOIN roles AS R ON A.id = R.actor_id
-    GROUP BY A.id, A.first_name, A.last_name 
-    HAVING quant < 2;
+     SELECT first_name, last_name
+     FROM (
+ 		SELECT A.first_name, A.last_name, COUNT(R.movie_id) AS quant
+        FROM actors AS A
+        JOIN roles AS R ON A.id = R.actor_id
+        GROUP BY A.id, A.first_name, A.last_name 
+        HAVING quant < 2
+	 ) AS AtoresEm2Filmes;
      
  6. Projetar, por gênero e ano, o número médio de filmes com menos de dois atores atuando.
 
-    SELECT MG.genre, M.year, AVG(AtoresPorFilmes.movie_id) AS Num_medioDeFilmes
+    SELECT MG.genre, M.year, AVG(quantPorFilme.quant) AS Media 
     FROM (
-	    SELECT movie_id, COUNT(actor_id) AS quant_atores
-	    FROM roles
-	    GROUP BY movie_id
-    ) AS AtoresPorFilmes
-    JOIN movies AS M ON AtoresPorFilmes.movie_id = M.id
-    JOIN movies_genres AS MG ON M.id = MG.movie_id
-    WHERE AtoresPorFilmes.quant_atores < 2
-    GROUP BY MG.genre, M.year
+        SELECT movie_id, COUNT(actor_id) AS quant
+        FROM roles
+        GROUP BY movie_id
+    ) AS quantPorFilme
+    JOIN movies_genres AS MG ON MG.movie_id = quantPorFilme.movie_id
+    JOIN movies AS M ON M.id = quantPorFilme.movie_id
+    WHERE quantPorFilme.quant < 2
+    GROUP BY MG.genre, M.year;
