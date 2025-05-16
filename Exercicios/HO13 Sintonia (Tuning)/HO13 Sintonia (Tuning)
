@@ -1,0 +1,56 @@
+SELECT DISTINCT A.CPF, A.Nome
+FROM Funcionarios A
+WHERE A.CPF IN (SELECT CPF_Supervisor FROM Funcionarios)
+AND A.CPF NOT IN (SELECT CPF FROM Clientes)
+
+    |
+    |   
+    V
+
+SELECT A.CPF, A.Nome
+FROM Funcionarios A INNER JOIN Funcionarios B ON A.CPF = B.CPF_Supervisor
+Where NOT EXISTS (
+    SELECT 1
+    FROM Clientes C
+    WHERE C.CPF = A.CPF
+)
+ 
+-----------------------------------------------------------------------
+
+SELECT A.CodFilme, B.Nome
+FROM Midias A, Filmes B
+WHERE A.CodFilme = B.Codigo
+AND A.Tipo = "DVD"
+OR A.Tipo = "VHS"
+
+    |
+    |   
+    V
+
+SELECT A.CodFilme, B.Nome
+FROM Midias A INNER JOIN Filmes ON A.CodFilme = B.Codigo 
+WHERE A.Tipo IN ('DVD', 'VHS')
+ 
+-----------------------------------------------------------------------
+
+SELECT A.CPF_Cliente, A.ID_Midia, A.DataLocacao
+FROM Aluguel A, Clientes B
+WHERE A.CPF_Cliente = B.CPF
+AND B.Sexo != "F"
+AND EXISTS (SELECT * FROM Pagamentos C
+    WHERE C.CPF_Cliente = A.CPF_Cliente
+    AND C.ID_Midia = A.ID_Midia
+    AND C.DataLocacao = A.DataLocacao)
+
+    |
+    |   
+    V
+
+SELECT A.CPF_Cliente, A.ID_Midia, A.DataLocacao
+FROM Aluguel A 
+INNER JOIN Clientes B ON A.CPF_Cliente = B.CPF
+INNER JOIN Pagamentos C ON 
+    C.CPF_Cliente = A.CPF_Cliente
+    AND C.ID_Midia = A.ID_Midia
+    AND C.DataLocacao = A.DataLocacao
+WHERE B.Sexo != "F";
