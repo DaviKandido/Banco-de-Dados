@@ -38,7 +38,7 @@ Banco-de-Dados/
 
 ## 🛠 Tecnologias Utilizadas
 
-* **PostgreSQL** (ou outro SGBD usado no curso — confirme aqui)
+* **PostgreSQL e MYSql** 
 * **SQL** (DDL e DML)
 * **Modelagem ER**
 * Ferramentas para diagramas (ex.: **draw\.io**, **brModelo** ou **DBeaver**)
